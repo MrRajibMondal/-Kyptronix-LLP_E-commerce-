@@ -26,11 +26,16 @@ export default function ProductDetail() {
       try {
         setLoading(true)
         const res = await API.get(`/products/${id}`)
+<<<<<<< HEAD
         const fetched = res.data?.product || res.data
         if (fetched && (fetched.id || fetched._id)) {
           setProduct(fetched)
         } else {
           throw new Error('Unexpected response shape')
+=======
+        if (res.data) {
+          setProduct(res.data)
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
         }
       } catch (err) {
         console.error('Error fetching product from API, checking local data:', err)

@@ -2,9 +2,13 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext.jsx'
 import { useWishlist } from '../context/WishlistContext.jsx'
+<<<<<<< HEAD
 import { CATEGORIES, PRODUCTS } from '../data/products.js'
 import { formatINR } from '../utils/format.js'
 import API from '../services/api.js'
+=======
+import { CATEGORIES } from '../data/products.js'
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
 import { ChevronDownIcon, HeartIcon, CartGlyphIcon, SearchIcon } from './Icons.jsx'
 
 function BrandMark() {
@@ -25,22 +29,30 @@ export default function Navbar() {
   const { ids } = useWishlist()
   const [catOpen, setCatOpen] = useState(false)
   const [query, setQuery] = useState('')
+<<<<<<< HEAD
   const [results, setResults] = useState([])
   const [searching, setSearching] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const catRef = useRef(null)
   const searchRef = useRef(null)
+=======
+  const catRef = useRef(null)
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
   const navigate = useNavigate()
 
   useEffect(() => {
     function onClickOutside(e) {
       if (catRef.current && !catRef.current.contains(e.target)) setCatOpen(false)
+<<<<<<< HEAD
       if (searchRef.current && !searchRef.current.contains(e.target)) setDropdownOpen(false)
+=======
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
     }
     document.addEventListener('mousedown', onClickOutside)
     return () => document.removeEventListener('mousedown', onClickOutside)
   }, [])
 
+<<<<<<< HEAD
   // Live search: debounce keystrokes, hit the backend product search endpoint,
   // and fall back to the local product catalog if the API isn't reachable.
   useEffect(() => {
@@ -91,11 +103,14 @@ export default function Navbar() {
     }
   }, [query])
 
+=======
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
   function goToCategory(category) {
     setCatOpen(false)
     navigate(category ? `/?category=${encodeURIComponent(category)}` : '/')
   }
 
+<<<<<<< HEAD
   function goToProduct(id) {
     setDropdownOpen(false)
     setQuery('')
@@ -105,6 +120,10 @@ export default function Navbar() {
   function handleSearch(e) {
     e.preventDefault()
     setDropdownOpen(false)
+=======
+  function handleSearch(e) {
+    e.preventDefault()
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
     navigate(query.trim() ? `/?q=${encodeURIComponent(query.trim())}` : '/')
   }
 
@@ -146,6 +165,7 @@ export default function Navbar() {
           </div>
         </nav>
 
+<<<<<<< HEAD
         <div className="navbar-search-wrap" ref={searchRef}>
           <form className="navbar-search" onSubmit={handleSearch} role="search">
             <SearchIcon />
@@ -198,6 +218,17 @@ export default function Navbar() {
             </div>
           )}
         </div>
+=======
+        <form className="navbar-search" onSubmit={handleSearch} role="search">
+          <SearchIcon />
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search for products…"
+            aria-label="Search products"
+          />
+        </form>
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
 
         <div className="navbar-actions">
           <NavLink to="/wishlist" className="navbar-icon-link" aria-label="Wishlist">

@@ -1331,12 +1331,15 @@ button {
   color: var(--indigo-deep);
 }
 
+<<<<<<< HEAD
 .navbar-search-wrap {
   position: relative;
   flex: 1;
   min-width: 0;
 }
 
+=======
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
 .navbar-search {
   flex: 1;
   display: flex;
@@ -1347,6 +1350,7 @@ button {
   border-radius: 999px;
   padding: 8px 14px;
   min-width: 0;
+<<<<<<< HEAD
   width: 100%;
 }
 
@@ -1445,6 +1449,8 @@ button {
 
 .search-dropdown-viewall:hover {
   color: var(--indigo);
+=======
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
 }
 
 .navbar-search svg {
@@ -1518,7 +1524,11 @@ button {
 
 @media (max-width: 900px) {
   .navbar-links,
+<<<<<<< HEAD
   .navbar-search-wrap {
+=======
+  .navbar-search {
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
     display: none;
   }
 }
@@ -2354,11 +2364,14 @@ button {
   box-shadow: 0 0 0 3px rgba(91, 95, 239, 0.28);
 }
 
+<<<<<<< HEAD
 .search-dropdown {
   animation: scaleIn 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
   transform-origin: top center;
 }
 
+=======
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
 /* Category chips — animated fill + press */
 .category-chip {
   transition: background 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s ease, border-color 0.25s ease, transform 0.15s ease;

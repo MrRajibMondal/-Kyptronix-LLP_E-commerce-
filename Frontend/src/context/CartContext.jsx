@@ -22,14 +22,19 @@ export function CartProvider({ children }) {
   const [address, setAddressState] = useState(() => {
     try {
       const saved = localStorage.getItem('checkout_address')
+<<<<<<< HEAD
       if (!saved) return null
       const parsed = JSON.parse(saved)
       return parsed ? { ...parsed, type: (parsed.type || 'home').toLowerCase() } : null
+=======
+      return saved ? JSON.parse(saved) : null
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
     } catch {
       return null
     }
   })
 
+<<<<<<< HEAD
   // Helper to extract the product's slug id (e.g. "wireless-mouse").
   // IMPORTANT: check `.id` (the slug your backend looks products up by)
   // BEFORE `._id` (Mongo's internal id) — products from the API have both,
@@ -42,11 +47,22 @@ export function CartProvider({ children }) {
   }
 
   // 1. Fetch Cart from Backend on Load
+=======
+  // Helper to extract clean product string ID
+  const getProductId = (product) => {
+    if (!product) return ''
+    if (typeof product === 'string') return product
+    return product._id || product.id || ''
+  }
+
+  // 1. Fetch Cart from Backend on Load (Silently handles 401 for guests)
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
   const fetchCart = async () => {
     try {
       setLoading(true)
       const res = await API.get('/cart')
       const backendCart = res.data
+<<<<<<< HEAD
 
       const rawItems = backendCart?.items || (Array.isArray(backendCart) ? backendCart : [])
       if (Array.isArray(rawItems)) {
@@ -57,6 +73,20 @@ export function CartProvider({ children }) {
       setDiscountAmount(backendCart?.discountAmount || backendCart?.discount || 0)
     } catch (err) {
       console.error('Error fetching backend cart:', err)
+=======
+      
+      const rawItems = backendCart?.items || (Array.isArray(backendCart) ? backendCart : [])
+      if (Array.isArray(rawItems) && rawItems.length > 0) {
+        setCartItems(rawItems)
+      }
+
+      if (backendCart?.coupon) setCoupon(backendCart.coupon)
+      if (backendCart?.discountAmount) setDiscountAmount(backendCart.discountAmount)
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        console.error('Error fetching backend cart:', err)
+      }
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
     } finally {
       setLoading(false)
     }
@@ -99,6 +129,10 @@ export function CartProvider({ children }) {
     const addQty = qty > 0 ? qty : 1
     if (!pId && typeof product !== 'object') return
 
+<<<<<<< HEAD
+=======
+    // Optimistic UI Update
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
     setCartItems((prev) => {
       const existingIndex = prev.findIndex((i) => getProductId(i.product || i) === pId)
 
@@ -115,7 +149,11 @@ export function CartProvider({ children }) {
         return [
           ...prev,
           {
+<<<<<<< HEAD
             product: typeof product === 'object' ? product : { id: pId },
+=======
+            product: typeof product === 'object' ? product : { _id: pId },
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
             quantity: addQty,
             qty: addQty,
           },
@@ -124,6 +162,7 @@ export function CartProvider({ children }) {
     })
 
     try {
+<<<<<<< HEAD
       const res = await API.post('/cart/items', { productId: pId, qty: addQty })
       if (res.data?.items) {
         setCartItems(res.data.items)
@@ -135,6 +174,20 @@ export function CartProvider({ children }) {
     }
   }
 
+=======
+      const res = await API.post('/cart', { productId: pId, quantity: addQty })
+      if (res.data?.items) {
+        setCartItems(res.data.items)
+      }
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        console.error('Error adding item to cart on backend:', err)
+      }
+    }
+  }
+
+  // Alias for backward compatibility
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
   const addToCart = addItem
 
   // 5. Remove Item from Cart
@@ -144,6 +197,7 @@ export function CartProvider({ children }) {
     setCartItems((prev) => prev.filter((item) => getProductId(item.product || item) !== pId))
 
     try {
+<<<<<<< HEAD
       const res = await API.delete(`/cart/items/${pId}`)
       if (res.data?.items) {
         setCartItems(res.data.items)
@@ -155,6 +209,20 @@ export function CartProvider({ children }) {
     }
   }
 
+=======
+      const res = await API.delete(`/cart/${pId}`)
+      if (res.data?.items) {
+        setCartItems(res.data.items)
+      }
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        console.error('Error removing item from backend cart:', err)
+      }
+    }
+  }
+
+  // Alias
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
   const removeFromCart = removeItem
 
   // 6. Update Item Quantity
@@ -173,6 +241,7 @@ export function CartProvider({ children }) {
     )
 
     try {
+<<<<<<< HEAD
       const res = await API.put(`/cart/items/${pId}`, { quantity })
       if (res.data?.items) {
         setCartItems(res.data.items)
@@ -181,10 +250,21 @@ export function CartProvider({ children }) {
       }
     } catch (err) {
       console.error('Error updating cart item on backend:', err)
+=======
+      const res = await API.put(`/cart/${pId}`, { quantity })
+      if (res.data?.items) {
+        setCartItems(res.data.items)
+      }
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        console.error('Error updating cart item on backend:', err)
+      }
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
     }
   }
 
   const incrementItem = (productId) => {
+<<<<<<< HEAD
     const found = items.find((i) => i.id === getProductId(productId))
     if (found) updateQuantity(found.id, found.qty + 1)
   }
@@ -211,6 +291,20 @@ export function CartProvider({ children }) {
 
   const isInCart = (productOrId) => getQtyInCart(productOrId) > 0
 
+=======
+    const found = items.find((i) => i.id === productId)
+    if (found) updateQuantity(productId, found.qty + 1)
+  }
+
+  const decrementItem = (productId) => {
+    const found = items.find((i) => i.id === productId)
+    if (found) {
+      if (found.qty <= 1) removeItem(productId)
+      else updateQuantity(productId, found.qty - 1)
+    }
+  }
+
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
   // 7. Apply & Remove Coupon
   const applyCoupon = async (code) => {
     try {
@@ -218,7 +312,11 @@ export function CartProvider({ children }) {
       const res = await API.post('/cart/coupon', { code })
       if (res.data?.items) setCartItems(res.data.items)
       if (res.data?.coupon) setCoupon(res.data.coupon)
+<<<<<<< HEAD
       setDiscountAmount(res.data?.discount || 0)
+=======
+      if (res.data?.discountAmount) setDiscountAmount(res.data.discountAmount)
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
     } catch (err) {
       const msg = err.response?.data?.message || 'Invalid or expired coupon code.'
       setCouponError(msg)
@@ -239,6 +337,7 @@ export function CartProvider({ children }) {
 
   // 8. Address Handler
   const setAddress = (newAddress) => {
+<<<<<<< HEAD
     const normalized = newAddress
       ? { ...newAddress, type: (newAddress.type || 'home').toLowerCase() }
       : null
@@ -249,6 +348,11 @@ export function CartProvider({ children }) {
       API.put('/cart/address', normalized).catch((err) => {
         console.error('Error saving address to backend cart:', err)
       })
+=======
+    setAddressState(newAddress)
+    if (newAddress) {
+      localStorage.setItem('checkout_address', JSON.stringify(newAddress))
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
     } else {
       localStorage.removeItem('checkout_address')
     }
@@ -262,12 +366,24 @@ export function CartProvider({ children }) {
     setCouponError('')
 
     try {
+<<<<<<< HEAD
       await API.post('/cart/clear')
     } catch (err) {
       console.error('Error clearing backend cart:', err)
     }
   }
 
+=======
+      await API.delete('/cart')
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        console.error('Error clearing backend cart:', err)
+      }
+    }
+  }
+
+  // Price & Total Calculations
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
   const derived = useMemo(() => {
     const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0)
     const discount = discountAmount
@@ -284,6 +400,10 @@ export function CartProvider({ children }) {
     }
   }, [items, discountAmount, coupon])
 
+<<<<<<< HEAD
+=======
+  // Backward-compatible Reducer Dispatch Handler
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
   const dispatch = (action) => {
     switch (action.type) {
       case 'ADD_ITEM':
@@ -323,8 +443,11 @@ export function CartProvider({ children }) {
     updateQuantity,
     incrementItem,
     decrementItem,
+<<<<<<< HEAD
     getQtyInCart,
     isInCart,
+=======
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
     applyCoupon,
     removeCoupon,
     setAddress,

@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "circuit-co-frontend",
+=======
+  "name": "ecommerce-checkout-frontend",
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -9,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^1.7.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -17,5 +22,15 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
     "vite": "^5.3.1"
+=======
+    "axios": "^1.18.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.2.0"
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
   }
 }

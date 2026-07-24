@@ -32,6 +32,7 @@ export function OrdersProvider({ children }) {
   const [orders, setOrders] = useState(loadInitial);
   const [loading, setLoading] = useState(true);
 
+<<<<<<< HEAD
   // Backend orders use `orderId` (e.g. "CC-XXXX") as their human-readable key.
   // The rest of this app's UI reads `order.id`, so normalize every order
   // coming back from the API to have both.
@@ -41,16 +42,30 @@ export function OrdersProvider({ children }) {
   }
 
   // 1. Fetch Orders from Backend on Mount
+=======
+  // 1. Fetch Orders from Backend on Mount (Gracefully ignores 401s for guests)
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
   const fetchOrders = async () => {
     try {
       setLoading(true);
       const res = await API.get('/orders');
+<<<<<<< HEAD
       const backendOrders = res.data?.orders
       if (Array.isArray(backendOrders)) {
         setOrders(backendOrders.map(normalizeOrder));
       }
     } catch (err) {
       console.error('Error fetching orders from backend:', err);
+=======
+      if (Array.isArray(res.data) && res.data.length > 0) {
+        setOrders(res.data);
+      }
+    } catch (err) {
+      // Suppress console error noise for guests (401 Unauthorized)
+      if (err.response?.status !== 401) {
+        console.error('Error fetching orders from backend:', err);
+      }
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
     } finally {
       setLoading(false);
     }
@@ -98,6 +113,7 @@ export function OrdersProvider({ children }) {
 
     try {
       const res = await API.post('/orders', orderPayload);
+<<<<<<< HEAD
       const backendOrder = normalizeOrder(res.data?.order);
       const finalId = res.data?.orderId || backendOrder?.id || localId;
 
@@ -109,6 +125,20 @@ export function OrdersProvider({ children }) {
       return finalId;
     } catch (err) {
       console.error('Error creating order on backend:', err);
+=======
+      const backendOrder = res.data;
+      
+      // Update local state with official backend response
+      setOrders((prev) =>
+        prev.map((o) => (o.id === localId ? backendOrder : o))
+      );
+      
+      return backendOrder._id || backendOrder.id || localId;
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        console.error('Error creating order on backend:', err);
+      }
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
       // Returns local order ID so checkout success screen still renders smoothly
       return localId;
     }
@@ -149,12 +179,17 @@ export function OrdersProvider({ children }) {
     );
 
     try {
+<<<<<<< HEAD
       const res = await API.patch(`/orders/${orderId}/cancel`, {
+=======
+      const res = await API.put(`/orders/${orderId}/cancel`, {
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
         reason,
         note,
         moveToWishlist
       });
 
+<<<<<<< HEAD
       const backendOrder = normalizeOrder(res.data?.order);
       if (backendOrder) {
         setOrders((prev) =>
@@ -163,6 +198,17 @@ export function OrdersProvider({ children }) {
       }
     } catch (err) {
       console.error('Error cancelling order on backend:', err);
+=======
+      if (res.data) {
+        setOrders((prev) =>
+          prev.map((o) => (o._id === orderId || o.id === orderId ? res.data : o))
+        );
+      }
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        console.error('Error cancelling order on backend:', err);
+      }
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
     }
   };
 

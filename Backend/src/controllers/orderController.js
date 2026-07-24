@@ -66,7 +66,11 @@ const getOrderById = asyncHandler(async (req, res) => {
   }
 
   const isOwner = order.user.toString() === req.user._id.toString()
+<<<<<<< HEAD
   if (!isOwner) {
+=======
+  if (!isOwner && req.user.role !== 'admin') {
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
     res.status(403)
     throw new Error('Not authorized to view this order')
   }
@@ -117,4 +121,16 @@ const cancelOrder = asyncHandler(async (req, res) => {
   res.json({ order })
 })
 
+<<<<<<< HEAD
 module.exports = { placeOrder, getMyOrders, getOrderById, cancelOrder }
+=======
+// @desc    List all orders (admin)
+// @route   GET /api/orders/admin/all
+// @access  Private/Admin
+const getAllOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find({}).sort({ placedAt: -1 }).populate('user', 'name email')
+  res.json({ orders })
+})
+
+module.exports = { placeOrder, getMyOrders, getOrderById, cancelOrder, getAllOrders }
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
