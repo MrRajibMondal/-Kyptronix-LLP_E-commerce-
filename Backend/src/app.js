@@ -3,7 +3,17 @@ const cors = require('cors')
 const helmet = require('helmet')
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+const rateLimit = require('express-rate-limit')
+
+const authRoutes = require('./routes/authRoutes')
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 const productRoutes = require('./routes/productRoutes')
 const cartRoutes = require('./routes/cartRoutes')
 const couponRoutes = require('./routes/couponRoutes')
@@ -28,10 +38,32 @@ if (process.env.NODE_ENV !== 'test') {
   app.use(morgan('dev'))
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+// Basic protection against brute-force on auth endpoints.
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 50,
+  standardHeaders: true,
+  legacyHeaders: false
+})
+app.use('/api/auth', authLimiter)
+
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', store: process.env.STORE_NAME || 'Circuit & Co.' })
 })
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+app.use('/api/auth', authRoutes)
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 app.use('/api/products', productRoutes)
 app.use('/api/cart', cartRoutes)
 app.use('/api/coupons', couponRoutes)
@@ -41,4 +73,12 @@ app.use('/api/wishlist', wishlistRoutes)
 app.use(notFound)
 app.use(errorHandler)
 
+<<<<<<< HEAD
 module.exports = app
+=======
+<<<<<<< HEAD
+module.exports = app
+=======
+module.exports = app
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70

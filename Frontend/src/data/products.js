@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 export const CATEGORIES = ['Mouse', 'Keyboard', 'Hub', 'Webcam', 'Audio', 'Storage', 'Stand', 'Lighting']
+=======
+export const CATEGORIES = ['Mouse', 'Keyboard', 'Hub', 'Webcam']
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 
 export const PRODUCTS = [
   {
@@ -102,6 +106,7 @@ images: [
 ],
     rating: 4.4,
     reviews: 703
+<<<<<<< HEAD
   },
   {
     id: 'wireless-earbuds',
@@ -202,6 +207,8 @@ images: [
     ],
     rating: 4.3,
     reviews: 312
+=======
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   }
 ]
 

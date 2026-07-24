@@ -158,6 +158,7 @@ export function TagIcon(props) {
   )
 }
 
+<<<<<<< HEAD
 export function PackageIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
@@ -167,6 +168,8 @@ export function PackageIcon(props) {
   )
 }
 
+=======
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 export function CashIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>

@@ -13,6 +13,10 @@ function loadInitial() {
   }
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 // Same normalization CartContext relies on: prefer the slug `.id`
 // (what the backend actually looks products up by), fall back to `_id`.
 function normalizeProduct(p) {
@@ -20,16 +24,33 @@ function normalizeProduct(p) {
   return { ...p, id: p.id || p._id }
 }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 export function WishlistProvider({ children }) {
   const [ids, setIds] = useState(loadInitial)
   const [wishlist, setWishlist] = useState([])
   const [loading, setLoading] = useState(true)
 
+<<<<<<< HEAD
   // 1. Fetch Wishlist from Backend on Mount
+=======
+<<<<<<< HEAD
+  // 1. Fetch Wishlist from Backend on Mount
+=======
+  // 1. Fetch Wishlist from Backend on Mount (Gracefully ignores 401s for guests)
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   const fetchWishlist = async () => {
     try {
       setLoading(true)
       const res = await API.get('/wishlist')
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
       const rawProducts = res.data?.products || []
       const productsData = rawProducts.map(normalizeProduct)
       const fetchedIds = res.data?.ids || productsData.map((p) => p.id).filter(Boolean)
@@ -38,6 +59,30 @@ export function WishlistProvider({ children }) {
       setIds(fetchedIds)
     } catch (err) {
       console.error('Error fetching wishlist from backend:', err)
+<<<<<<< HEAD
+=======
+=======
+      const productsData = res.data.products || res.data || []
+      
+      setWishlist(productsData)
+
+      // Sync backend IDs with local IDs state
+      if (Array.isArray(productsData)) {
+        const fetchedIds = productsData
+          .map((p) => p._id || p.id || (typeof p === 'string' ? p : null))
+          .filter(Boolean)
+        
+        if (fetchedIds.length > 0) {
+          setIds(fetchedIds)
+        }
+      }
+    } catch (err) {
+      // Suppress console error noise for guests (401 Unauthorized)
+      if (err.response?.status !== 401) {
+        console.error('Error fetching wishlist from backend:', err)
+      }
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
     } finally {
       setLoading(false)
     }
@@ -60,7 +105,15 @@ export function WishlistProvider({ children }) {
   const normalizeId = (productId) => {
     if (!productId) return ''
     if (typeof productId === 'object') {
+<<<<<<< HEAD
       return productId.id || productId._id || ''
+=======
+<<<<<<< HEAD
+      return productId.id || productId._id || ''
+=======
+      return productId._id || productId.id || ''
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
     }
     return String(productId)
   }
@@ -70,12 +123,23 @@ export function WishlistProvider({ children }) {
     const idStr = normalizeId(productId)
     if (!idStr) return
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    // Optimistic UI update for instant feedback
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
     setIds((prev) =>
       prev.includes(idStr) ? prev.filter((id) => id !== idStr) : [...prev, idStr]
     )
 
     try {
       const res = await API.post('/wishlist/toggle', { productId: idStr })
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
       if (Array.isArray(res.data?.ids)) {
         setIds(res.data.ids)
       }
@@ -85,6 +149,27 @@ export function WishlistProvider({ children }) {
     }
   }
 
+<<<<<<< HEAD
+=======
+=======
+      const updatedProducts = res.data.products || res.data
+      if (Array.isArray(updatedProducts)) {
+        setWishlist(updatedProducts)
+        const newIds = updatedProducts
+          .map((p) => p._id || p.id || (typeof p === 'string' ? p : null))
+          .filter(Boolean)
+        setIds(newIds)
+      }
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        console.error('Error toggling wishlist item on backend:', err)
+      }
+    }
+  }
+
+  // Alias toggleWishlist for backward compatibility
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   const toggleWishlist = toggle
 
   // 4. Remove Item from Wishlist
@@ -93,12 +178,34 @@ export function WishlistProvider({ children }) {
     if (!idStr) return
 
     setIds((prev) => prev.filter((id) => id !== idStr))
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
     setWishlist((prev) => prev.filter((p) => p.id !== idStr))
 
     try {
       await API.delete(`/wishlist/${idStr}`)
     } catch (err) {
       console.error('Error removing item from wishlist:', err)
+<<<<<<< HEAD
+=======
+=======
+
+    try {
+      const res = await API.post('/wishlist/toggle', { productId: idStr })
+      if (res.data) {
+        const updatedProducts = res.data.products || res.data
+        if (Array.isArray(updatedProducts)) {
+          setWishlist(updatedProducts)
+        }
+      }
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        console.error('Error removing item from wishlist:', err)
+      }
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
     }
   }
 

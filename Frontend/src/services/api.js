@@ -1,6 +1,10 @@
 // src/services/api.js
 import axios from 'axios';
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 // This app has no login/auth. The backend recognizes each visitor via an
 // anonymous "guest" cookie instead, so every request must include cookies —
 // that's what withCredentials does. Without it the backend can't remember
@@ -8,9 +12,41 @@ import axios from 'axios';
 const API = axios.create({
   baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
   withCredentials: true,
+<<<<<<< HEAD
+=======
+=======
+const API = axios.create({
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
+<<<<<<< HEAD
 export default API;
+=======
+<<<<<<< HEAD
+export default API;
+=======
+// Interceptor to attach JWT token if present
+API.interceptors.request.use(
+  (config) => {
+    // Check common storage keys for user auth token
+    const token =
+      localStorage.getItem('token') ||
+      localStorage.getItem('auth_token') ||
+      JSON.parse(localStorage.getItem('user') || '{}')?.token;
+
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+export default API;
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70

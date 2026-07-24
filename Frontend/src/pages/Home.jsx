@@ -23,7 +23,15 @@ export default function Home() {
         const res = await API.get('/products', {
           params: {
             category: category || undefined,
+<<<<<<< HEAD
             search: query || undefined,
+=======
+<<<<<<< HEAD
+            search: query || undefined,
+=======
+            q: query || undefined,
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
           },
         })
 

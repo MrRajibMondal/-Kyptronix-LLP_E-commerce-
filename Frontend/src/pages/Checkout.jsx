@@ -37,6 +37,10 @@ export default function Checkout() {
     setStage('summary')
   }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   async function handlePlaceOrder() {
     setPlacing(true)
     try {
@@ -56,6 +60,28 @@ export default function Checkout() {
     } finally {
       setPlacing(false)
     }
+<<<<<<< HEAD
+=======
+=======
+  function handlePlaceOrder() {
+    setPlacing(true)
+    const orderId = placeOrder({
+      items,
+      address,
+      subtotal,
+      discount,
+      total: grandTotal,
+      coupon,
+      gst: gst.total,
+      deliveryFee,
+      paymentMethod: 'Cash on Delivery'
+    })
+    window.setTimeout(() => {
+      dispatch({ type: 'CLEAR_CART' })
+      navigate(`/success?order=${encodeURIComponent(orderId)}`)
+    }, 500)
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   }
 
   return (

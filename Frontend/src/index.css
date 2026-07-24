@@ -1,4 +1,5 @@
 :root {
+<<<<<<< HEAD
   /* Deep-to-light blue system: every "switch" surface (navbar, buttons,
      active chips, active dots, selected radios) draws from this same
      three-stop gradient so the theme reads as one cohesive idea. */
@@ -23,6 +24,21 @@
   --gradient-primary-hover: linear-gradient(135deg, #245fd6 0%, #3f8ef2 100%);
   --gradient-surface: linear-gradient(160deg, #ffffff 0%, #f1f7ff 100%);
   --gradient-ring: linear-gradient(135deg, #123a86 0%, #4f9dff 100%);
+=======
+  --ink: #12162b;
+  --ink-soft: #1c2140;
+  --paper: #f7f7fb;
+  --paper-dim: #eceefa;
+  --line: #dcdff0;
+  --indigo: #5b5fef;
+  --indigo-deep: #4245c4;
+  --amber: #ffb648;
+  --signal: #1fa97a;
+  --danger: #e0554f;
+  --text: #171a2e;
+  --text-muted: #666b8a;
+  --text-on-ink: #eef0fb;
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -32,8 +48,13 @@
   --radius-md: 12px;
   --radius-lg: 20px;
 
+<<<<<<< HEAD
   --shadow-card: 0 1px 2px rgba(10, 37, 89, 0.05), 0 8px 24px rgba(10, 37, 89, 0.07);
   --shadow-pop: 0 12px 32px rgba(47, 111, 237, 0.22);
+=======
+  --shadow-card: 0 1px 2px rgba(23, 26, 46, 0.04), 0 8px 24px rgba(23, 26, 46, 0.06);
+  --shadow-pop: 0 12px 32px rgba(91, 95, 239, 0.18);
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 }
 
 * {
@@ -108,7 +129,11 @@ button {
   height: 420px;
   top: -140px;
   left: -100px;
+<<<<<<< HEAD
   background: radial-gradient(circle, var(--ink-soft) 0%, transparent 70%);
+=======
+  background: radial-gradient(circle, var(--indigo) 0%, transparent 70%);
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   animation: drift-a 26s ease-in-out infinite;
 }
 
@@ -117,7 +142,11 @@ button {
   height: 360px;
   top: 30%;
   right: -140px;
+<<<<<<< HEAD
   background: radial-gradient(circle, var(--indigo) 0%, transparent 70%);
+=======
+  background: radial-gradient(circle, var(--amber) 0%, transparent 70%);
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   animation: drift-b 32s ease-in-out infinite;
 }
 
@@ -126,7 +155,11 @@ button {
   height: 320px;
   bottom: -160px;
   left: 30%;
+<<<<<<< HEAD
   background: radial-gradient(circle, var(--sky) 0%, transparent 70%);
+=======
+  background: radial-gradient(circle, var(--signal) 0%, transparent 70%);
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   animation: drift-c 38s ease-in-out infinite;
 }
 
@@ -189,7 +222,11 @@ button {
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+<<<<<<< HEAD
   border-left: 1px solid rgba(255, 255, 255, 0.2);
+=======
+  border-left: 1px solid #33386a;
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   padding-left: 10px;
   margin-left: 2px;
 }
@@ -199,7 +236,11 @@ button {
   align-items: center;
   gap: 8px;
   background: var(--ink-soft);
+<<<<<<< HEAD
   border: 1px solid rgba(255, 255, 255, 0.2);
+=======
+  border: 1px solid #33386a;
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   color: var(--text-on-ink);
   padding: 8px 14px;
   border-radius: 999px;
@@ -320,7 +361,11 @@ button {
   content: '';
   position: absolute;
   inset: 0;
+<<<<<<< HEAD
   background: linear-gradient(115deg, transparent 40%, rgba(47, 111, 237, 0.07) 50%, transparent 60%);
+=======
+  background: linear-gradient(115deg, transparent 40%, rgba(91, 95, 239, 0.07) 50%, transparent 60%);
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   transform: translateX(-120%);
   transition: transform 0.6s ease;
   pointer-events: none;
@@ -387,13 +432,26 @@ button {
 }
 
 .btn-primary {
+<<<<<<< HEAD
   background: var(--gradient-primary);
+=======
+  background: var(--indigo);
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   color: #fff;
   box-shadow: var(--shadow-pop);
 }
 
+<<<<<<< HEAD
 .btn-primary:disabled {
   background: #b9cdf2;
+=======
+.btn-primary:hover {
+  background: var(--indigo-deep);
+}
+
+.btn-primary:disabled {
+  background: #b7b9ee;
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   box-shadow: none;
   cursor: not-allowed;
 }
@@ -406,7 +464,11 @@ button {
 
 .btn-ghost:hover {
   border-color: var(--indigo);
+<<<<<<< HEAD
   background: var(--sky-pale);
+=======
+  background: #f1f1fd;
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 }
 
 .btn-block {
@@ -1235,20 +1297,28 @@ button {
    ================================================================ */
 
 .navbar {
+<<<<<<< HEAD
   background: var(--gradient-navbar);
   background-size: 180% 180%;
   animation: navbarDrift 18s ease-in-out infinite;
+=======
+  background: var(--ink);
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   color: var(--text-on-ink);
   padding: 14px clamp(20px, 4vw, 56px);
   position: sticky;
   top: 0;
   z-index: 30;
+<<<<<<< HEAD
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 @keyframes navbarDrift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
+=======
+  border-bottom: 1px solid #262b52;
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 }
 
 .navbar-row {
@@ -1345,23 +1415,41 @@ button {
   color: var(--indigo-deep);
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 .navbar-search-wrap {
   position: relative;
   flex: 1;
   min-width: 0;
 }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 .navbar-search {
   flex: 1;
   display: flex;
   align-items: center;
   gap: 8px;
+<<<<<<< HEAD
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 999px;
   padding: 8px 14px;
   min-width: 0;
+=======
+  background: var(--ink-soft);
+  border: 1px solid #33386a;
+  border-radius: 999px;
+  padding: 8px 14px;
+  min-width: 0;
+<<<<<<< HEAD
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   width: 100%;
 }
 
@@ -1460,6 +1548,11 @@ button {
 
 .search-dropdown-viewall:hover {
   color: var(--indigo);
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 }
 
 .navbar-search svg {
@@ -1533,7 +1626,15 @@ button {
 
 @media (max-width: 900px) {
   .navbar-links,
+<<<<<<< HEAD
   .navbar-search-wrap {
+=======
+<<<<<<< HEAD
+  .navbar-search-wrap {
+=======
+  .navbar-search {
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
     display: none;
   }
 }
@@ -1650,11 +1751,15 @@ button {
 }
 
 .hero-dot {
+<<<<<<< HEAD
   position: relative;
+=======
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   width: 8px;
   height: 8px;
   border-radius: 50%;
   border: none;
+<<<<<<< HEAD
   background: #c3d8f7;
   cursor: pointer;
   padding: 0;
@@ -1693,6 +1798,16 @@ button {
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   padding: 4px 10px;
+=======
+  background: #c7cbef;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hero-dot.active {
+  background: var(--indigo);
+  width: 22px;
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   border-radius: 999px;
 }
 
@@ -1729,7 +1844,11 @@ button {
 }
 
 .category-chip.active {
+<<<<<<< HEAD
   background: var(--gradient-primary);
+=======
+  background: var(--indigo);
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   border-color: var(--indigo);
   color: #fff;
 }
@@ -2152,9 +2271,12 @@ button {
 
 .payment-method-option input {
   margin-top: 3px;
+<<<<<<< HEAD
   width: 17px;
   height: 17px;
   accent-color: var(--indigo);
+=======
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 }
 
 .payment-method-option strong {
@@ -2169,8 +2291,12 @@ button {
 
 .payment-method-option.selected {
   border-color: var(--indigo);
+<<<<<<< HEAD
   background: var(--sky-pale);
   box-shadow: 0 0 0 1px var(--indigo) inset;
+=======
+  background: #f1f1fd;
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 }
 
 .payment-method-option.disabled {
@@ -2218,8 +2344,13 @@ button {
 }
 
 @keyframes softPulse {
+<<<<<<< HEAD
   0%, 100% { box-shadow: 0 0 0 0 rgba(47, 111, 237, 0.35); }
   50% { box-shadow: 0 0 0 6px rgba(47, 111, 237, 0); }
+=======
+  0%, 100% { box-shadow: 0 0 0 0 rgba(91, 95, 239, 0.35); }
+  50% { box-shadow: 0 0 0 6px rgba(91, 95, 239, 0); }
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 }
 
 @keyframes heartBeat {
@@ -2296,15 +2427,25 @@ button {
 }
 
 .btn-primary {
+<<<<<<< HEAD
   background: linear-gradient(135deg, var(--indigo-deep), var(--indigo) 55%, var(--sky));
   background-size: 180% 180%;
+=======
+  background: linear-gradient(135deg, var(--indigo), var(--indigo-deep));
+  background-size: 160% 160%;
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
+<<<<<<< HEAD
   box-shadow: 0 14px 30px rgba(47, 111, 237, 0.32);
   filter: brightness(1.04);
   background-position: 100% 0;
+=======
+  box-shadow: 0 14px 30px rgba(91, 95, 239, 0.3);
+  filter: brightness(1.04);
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 }
 
 .btn-primary:active {
@@ -2401,15 +2542,28 @@ button {
 }
 
 .navbar-search:focus-within {
+<<<<<<< HEAD
   border-color: var(--sky);
   box-shadow: 0 0 0 3px rgba(79, 157, 255, 0.32);
 }
 
+=======
+  border-color: var(--indigo);
+  box-shadow: 0 0 0 3px rgba(91, 95, 239, 0.28);
+}
+
+<<<<<<< HEAD
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 .search-dropdown {
   animation: scaleIn 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
   transform-origin: top center;
 }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 /* Category chips — animated fill + press */
 .category-chip {
   transition: background 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s ease, border-color 0.25s ease, transform 0.15s ease;

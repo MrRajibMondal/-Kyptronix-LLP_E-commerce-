@@ -77,6 +77,10 @@ const removeItem = asyncHandler(async (req, res) => {
   res.json(serializeCart(cart))
 })
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 // @desc    Set an item's quantity directly (used by the +/- stepper in the UI)
 // @route   PUT /api/cart/items/:productId
 // @access  Public (guest-scoped)
@@ -98,6 +102,11 @@ const setItemQuantity = asyncHandler(async (req, res) => {
   res.json(serializeCart(cart))
 })
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
 // @desc    Increment an item's quantity by 1
 // @route   PATCH /api/cart/items/:productId/increment
 // @access  Private
@@ -199,7 +208,14 @@ module.exports = {
   getCart,
   addItem,
   removeItem,
+<<<<<<< HEAD
   setItemQuantity,
+=======
+<<<<<<< HEAD
+  setItemQuantity,
+=======
+>>>>>>> c1757f6fdd2539f341d77016d34ebd8fb39c4f58
+>>>>>>> 71332330338963d4802b4ab68da0a73031b78f70
   incrementItem,
   decrementItem,
   applyCoupon,
